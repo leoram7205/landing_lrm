@@ -10,7 +10,7 @@ export const InicioPage = () => {
         </div>
         <div className="py-10 flex flex-col lg:w-1/2 justify-center ">
           <div className="rounded-full flex justify-center mt-10 mb-10">
-            <img  className="rounded-full h-80 w-80 " src="./src/assets/foto_perfil.png"  alt="Foto de Perfil LRM" />
+            <img  className="rounded-full h-80 w-80 " src="./assets/foto_perfil.png"  alt="Foto de Perfil LRM" />
             </div>
         </div>
       </div>

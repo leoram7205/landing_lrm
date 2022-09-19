@@ -12,7 +12,7 @@ export const ContactoPage = () => {
         </p>
         <div className='flex flex-row ' >
           <a href="mailto:leoram72@gmail.com" target="_blank">
-            <img src="./src/assets/email-round-icon.svg" alt="Correo electrónico" />
+            <img src="./assets/email-round-icon.svg" alt="Correo electrónico" />
             <p className='text-xl text-white' >leoram72@gmail.com</p>
           </a>
         </div>
