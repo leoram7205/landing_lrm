@@ -1,44 +1,112 @@
-import React from 'react'
+import React, { useState } from "react";
+import { CarouselProvider, Slider, ButtonBack, ButtonNext } from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
+import { ExperienceSlide } from '../components/ExperienceSlide';
+import { experiencias } from "../databases/experiencias";
 
 export const ExperienciaPage = () => {
-  return (
-    <div id="default-carousel" className="relative" data-carousel="static">
-    {/* <!-- Carousel wrapper --> */}
-    <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
-         {/* <!-- Item 1 --> */}
-        <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <span className="absolute text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 sm:text-3xl dark:text-gray-800">First Slide</span>
-            <img src="/docs/images/carousel/carousel-1.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-        {/* <!-- Item 2 --> */}
-        <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-2.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-        {/* <!-- Item 3 --> */}
-        <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-3.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-    </div>
-    {/* <!-- Slider indicators --> */}
-    <div className="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-    </div>
-    {/* <!-- Slider controls --> */}
-    <button type="button" className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span className="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg aria-hidden="true" className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-            <span className="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span className="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg aria-hidden="true" className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            <span className="sr-only">Next</span>
-        </span>
-    </button>
-</div>
+    return (
+        <div className="container mx-auto">
+        <div className='bg-[#0C2C4A] flex flex-col w-full mt-6 mb-12'>
+            <div className='flex pl-28 mb-6'>
+                <h1 className='font-bold text-4xl text-white '>EXPERIENCIA</h1>
+            </div>
+            {/* Carousel for desktop and large size devices */}
+            <CarouselProvider className="lg:block hidden" naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={8} visibleSlides={2} step={1} infinite={true}>
+                <div className="w-full relative flex items-center justify-center">
+                    <ButtonBack role="button" aria-label="slide backward" className="absolute z-30 left-0 ml-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
+                        <svg width={12} height={18} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 1L1 7L7 13" stroke="#0C7C9A" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </ButtonBack>
+                    <div className="w-full h-full ml-10 mx-auto ">
+                        <Slider>
+                            <div id="slider" className="h-full ml-10 flex lg:gap-8 md:gap-6 gap-14 content-start ">
+                                {experiencias.map((experiencia)=>(
+                                    <ExperienceSlide
+                                        key={experiencia.id}
+                                        company={experiencia.company}
+                                        date_from={experiencia.date_form}
+                                        date_to={experiencia.date_to}
+                                        position={experiencia.position}
+                                        desc={experiencia.desc}
+                                    />
+                                ))}
+                            </div>
+                        </Slider>
+                    </div>
+                    <ButtonNext role="button" aria-label="slide forward" className="absolute z-30 right-0 mr-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
+                        <svg width={12} height={18} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L7 7L1 13" stroke="#0C7C9A" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </ButtonNext>
+                </div>
+            </CarouselProvider>
 
-  )
+            {/* Carousel for tablet and medium size devices */}
+            <CarouselProvider className="lg:hidden md:block hidden" naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={8} visibleSlides={2} step={1} infinite={true}>
+                    <div className="w-full relative flex items-center justify-center">
+                        <ButtonBack role="button" aria-label="slide backward" className="absolute z-30 left-0 ml-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
+                            <svg width={12} height={18} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 1L1 7L7 13" stroke="#0C7C9A" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonBack>
+                        <div className="w-full h-full ml-10 mx-auto overflow-x-hidden overflow-y-hidden">
+                            <Slider>
+                                <div id="slider" className="h-full flex lg:gap-8 md:gap-6 gap-14 content-start  transition ease-out duration-700">
+                                {experiencias.map((experiencia)=>(
+                                    <ExperienceSlide
+                                        key={experiencia.id}
+                                        company={experiencia.company}
+                                        date_from={experiencia.date_form}
+                                        date_to={experiencia.date_to}
+                                        position={experiencia.position}
+                                        desc={experiencia.desc}
+                                    />
+                                ))}
+                                </div>
+                            </Slider>
+                        </div>
+                        <ButtonNext role="button" aria-label="slide forward" className="absolute z-30 right-0 mr-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
+                            <svg width={12} height={18} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1L7 7L1 13" stroke="#0C7C9A" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonNext>
+                    </div>
+                </CarouselProvider>
+
+            {/* Carousel for mobile and Small size Devices */}
+            <CarouselProvider className="block md:hidden " naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={8} visibleSlides={1} step={1} infinite={true}>
+                    <div className="w-full relative flex items-center justify-center">
+                        <ButtonBack role="button" aria-label="slide backward" className="absolute z-30 left-0 ml-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
+                            <svg width={12} height={18} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 1L1 7L7 13" stroke="#0C7C9A" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonBack>
+                        <div className="w-full h-full ml-20 mx-auto flex items-center overflow-x-hidden overflow-y-hidden">
+                            <Slider>
+                                <div id="slider" className="h-full w-full flex lg:gap-8 md:gap-6 content-start transition ease-out duration-700">
+                                {experiencias.map((experiencia)=>(
+                                    <ExperienceSlide
+                                        key={experiencia.id}
+                                        company={experiencia.company}
+                                        date_from={experiencia.date_form}
+                                        date_to={experiencia.date_to}
+                                        position={experiencia.position}
+                                        desc={experiencia.desc}
+                                    />
+                                ))}
+                                </div>
+                            </Slider>
+                        </div>
+                        <ButtonNext role="button" aria-label="slide forward" className="absolute z-30 right-0 mr-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
+                            <svg width={12} height={18} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1L7 7L1 13" stroke="#0C7C9A" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonNext>
+                    </div>
+                </CarouselProvider>
+        </div>
+        </div>
+    )
 }

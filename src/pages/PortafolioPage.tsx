@@ -8,7 +8,7 @@ export const PortafolioPage = () => {
       <div className='flex pl-28 mb-6'>
         <h1 className='font-bold text-4xl text-[#0C2C4A] '>PORTAFOLIO</h1>
       </div>
-      <div className='grid lg:grid-cols-2 grid-cols-1 md:grid-cols-2  gap-4 lg:justify-items-center justify-items-center justify-center  '>
+      <div className='grid lg:grid-cols-2 grid-cols-1 md:grid-cols-2  gap-4 lg:justify-items-center justify-items-center justify-center mb-14 '>
       {personalProyects.map((project) => (
         <ProjectCard 
           key={project.id}

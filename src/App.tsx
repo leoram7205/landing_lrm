@@ -26,13 +26,13 @@ function App() {
       <section id="portafolio" className='h-auto'>
         <PortafolioPage />
       </section>
-      <section id="experiencia" >
+      <section id="experiencia" className='bg-[#0C2C4A] h-auto'>
         <ExperienciaPage />
       </section>
-      <section id="estudios" >
+      <section id="estudios" className='h-auto'>
         <EstudiosPage />
       </section>
-      <section id="contacto" >
+      <section id="contacto" className='bg-[#0C2C4A] h-auto'>
         <ContactoPage />
       </section>
     </>

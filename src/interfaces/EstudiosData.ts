@@ -1,4 +1,4 @@
-export type PersonalData = {
+export type EstudiosData = {
     id?: string;
     institution: string;
     title: string;
