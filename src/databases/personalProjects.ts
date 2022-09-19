@@ -27,7 +27,7 @@ export const personalProyects = [
         id: "4",
         name: "Landing Page",
         desc: "Para este desarrollo se empleo ReactJs, con Tailwind como libreria de CSS, también se utilizó TypeScript, se crearon interfaces para simular la obtencion de datos a partir de archivos JSON.",
-        image: "./src/assets/landing_img.png",
+        image: "./assets/landing_img.png",
         url_preview: "",
         url_github: "https://github.com/leoram7205/landing_lrm.git",
     }

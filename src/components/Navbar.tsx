@@ -8,7 +8,7 @@ export function Navbar() {
       <nav className="flex flex-wrap items-center justify-between px-2 py-3 bg-[#0C2C4A] fixed w-full shadow-md shadow-black">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:justify-between">
-            <img className="h-10 w-14" src="./src/assets/LogoLeo copia.png" alt="Logo LRM" />
+            <img className="h-10 w-14" src="./assets/LogoLeo.png" alt="Logo LRM" />
             <a
               className="text-xl font-bold leading-relaxed inline-block mr-4 ml-6 py-2 whitespace-nowrap uppercase text-white"
               href="/"
