@@ -27,7 +27,7 @@ export const experiencias = [
         id: 3,
         company: "CONSULTOR SERVICIOS T.I.",
         date_form: "Junio de 2016",
-        date_to: "Abril de 1017",
+        date_to: "Abril de 2017",
         position: "Consultor",
         desc: "Consultoría en el desarrollo e implementación de software desde el levantamiento de información, pasando por el análisis y diseño de requerimientos, desarrollo de aplicativos e implementación, junto con las pruebas funcionales estos proyectos en su mayoría fueron desarrollados usando metodologías tradicionales tipo RUP, para clientes como el Instituto Nacional de Medicina Legal y Ciencias Forenses, La Unión Colegiada de Notariado Colombiano y Certicámara S.A."
     },
